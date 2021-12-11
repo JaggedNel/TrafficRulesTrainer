@@ -8,11 +8,14 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Margin="10">
-            <Image x:Name="QuestionImage"/>
-            <Label x:Name="QuestionLabel" Margin="8"/>
-            <ListBox x:Name="AnswerVariants"/>
-            <Button x:Name="SkipQuesionButton" DockPanel.Dock="Right" Width="100" Content="Пропустить" Margin="8" HorizontalAlignment="Right"/>
-            <Label x:Name="AnswerExplanationLabel" Margin="8"/>
+            <Image x:Name="QuestionImageViewer" MinHeight="200"/>
+            <TextBlock x:Name="QuestionTextLabel" TextWrapping="Wrap" Margin="8"/>
+            <ListBox x:Name="AnswerVariantsList"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="AnswerButton" Width="100" Content="Ответить" Margin="8" HorizontalAlignment="Right" Click="AnswerButton_Click"/>
+                <Button x:Name="NextButton" Width="100" Content="Далее" Margin="8" HorizontalAlignment="Right" Click="NextButton_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="AnswerExplanationLabel" TextWrapping="Wrap" Margin="8"/>
         </StackPanel>
     </Grid>
 </UserControl>

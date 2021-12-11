@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
@@ -69,7 +70,6 @@
     <Compile Include="QuestionCreationControl.xaml.cs">
       <DependentUpon>QuestionCreationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserData.cs" />
     <Compile Include="UserPageControl.xaml.cs">
       <DependentUpon>UserPageControl.xaml</DependentUpon>
     </Compile>
@@ -139,7 +139,19 @@
     <None Include="Connected Services\ServiceReference1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference1\Service132.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Service134.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceReference1\TrafficRulesTrainer.ServiceReference1.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\TrafficRulesTrainer.ServiceReference1.QuestionForm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\TrafficRulesTrainer.ServiceReference1.UserData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

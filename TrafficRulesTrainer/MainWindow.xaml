@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrafficRulesTrainer"
         mc:Ignorable="d"
-        Title="ПДД тест" Height="450" Width="800">
+        Title="ПДД тест" MinHeight="600" MinWidth="1000">
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>

@@ -9,7 +9,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -19,21 +19,21 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Column="0" Grid.Row="0">
-            <Label Content="Изображение" Margin="8" Background="Gray"/>
+            <Label Content="Изображение" Margin="8"/>
             <Button x:Name="ChooseImageBtn" Content="Выбрать" Margin="8,0,8,0" Click="ChooseImageBtn_Click"/>
         </StackPanel>
         <Image Name="QuestionImageViewer" Grid.Column="1" Grid.Row="0"/>
-        <Label Content="Текст вопроса" Margin="8" Grid.Column="0" Grid.Row="1" Background="Gray"/>
+        <Label Content="Текст вопроса" Margin="8" Grid.Column="0" Grid.Row="1"/>
         <TextBox x:Name="QuestionTextBox" TextWrapping="Wrap" Margin="8" Grid.Column="1" Grid.Row="1"/>
         <StackPanel Grid.Column="0" Grid.Row="2">
-            <Label Content="Варианты" Margin="8" HorizontalAlignment="Left" Background="Gray"/>
+            <Label Content="Варианты" Margin="8" HorizontalAlignment="Left"/>
             <Button x:Name="AddAnswerVariant" Content="+" Margin="8,0,8,0" Click="AddAnswerVariant_Click"/>
             <Button x:Name="RemoveAnsverVariant" Content="-" Margin="8,0,8,0" Click="RemoveAnsverVariant_Click"/>
             <Button x:Name="SetRightAnswer" Content="Правильный" Margin="8,0,8,8" Click="SetRightAnswer_Click"/>
         </StackPanel>
         <ListBox x:Name="AnswerVariantsList" Margin ="8" Grid.Column="1" Grid.Row="2"/>
-        <Label Content="Пояснение" Grid.Column="0" Grid.Row="3" Background="Gray"/>
-        <TextBox x:Name="AnswerExplanationBox" Margin="8" Grid.Column="1" Grid.Row="3"/>
+        <Label Content="Пояснение" Grid.Column="0" Grid.Row="3"/>
+        <TextBox x:Name="AnswerExplanationBox" TextWrapping="Wrap" Margin="8" Grid.Column="1" Grid.Row="3"/>
         <Button x:Name="SaveQuestionBtn" Content="Сохранить" Grid.Column="1" Grid.Row="4" Width="90" Height="20" Click="SaveQuestionBtn_Click"/>
     </Grid>
 </UserControl>

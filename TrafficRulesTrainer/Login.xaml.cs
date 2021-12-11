@@ -13,27 +13,80 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace TrafficRulesTrainer {
-    /// <summary>
-    /// Логика взаимодействия для Login.xaml
-    /// </summary>
-    public partial class Login : Window {
-        public Login() {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Логика взаимодействия для Login.xaml
+	/// </summary>
+	public partial class Login : Window {
+		public Login() {
+			InitializeComponent();
+			this.Closed += Login_Closed;
+		}
 
-        public static void Open() {
-            Login loginWindow = new Login();
-            loginWindow.Owner = ApplicationPresenter.ViewModel.MainWindow;
-            loginWindow.ShowDialog();
-        }
+		private void Login_Closed(object sender, EventArgs e) {
+			if (ApplicationPresenter.ViewModel.User == null)
+				ApplicationPresenter.ViewModel.MainWindow.Close();
+		}
 
-        private void LoginBtn_Click(object sender, RoutedEventArgs e) {
-            if (true) {
-                ApplicationPresenter.ViewModel.User = new UserData(LoginBox.Text, PasswordBox.Password);
-            } else {
-                this.DialogResult = true;
-                Close();
-            }
-        }
-    }
+		bool regMode = false; //false -вход , true -регистрация
+
+		public static void Open() {
+			Login loginWindow = new Login();
+			loginWindow.Owner = ApplicationPresenter.ViewModel.MainWindow;
+			loginWindow.ShowDialog();
+		}
+
+		private void LoginBtn_Click(object sender, RoutedEventArgs e) {
+			if (!regMode) {
+				if (string.IsNullOrWhiteSpace(LoginBox.Text) || string.IsNullOrWhiteSpace(PasswordBox.Password)) {
+					MessageBox.Show("Введите логин и пароль.");
+					return;
+				}
+				using (var client = new ServiceReference1.Service1Client()) {
+					ServiceReference1.UserData user = client.Login(LoginBox.Text, PasswordBox.Password);
+
+					if (user != null) {
+						ApplicationPresenter.ViewModel.User = user;
+						this.DialogResult = true;
+						Close();
+					} else {
+						MessageBox.Show("Неверное имя пользователя или пароль.");
+					}
+				}
+			} else {
+				regMode = false;
+				RepeatPasswordBox.Visibility = RepeatPasswordLabel.Visibility = Visibility.Hidden;
+			}
+		}
+
+		private void RegistrationBtn_Click(object sender, RoutedEventArgs e) {
+			if (regMode) {
+				if (string.IsNullOrWhiteSpace(LoginBox.Text) || string.IsNullOrWhiteSpace(PasswordBox.Password)) {
+					MessageBox.Show("Введите логин и пароль.");
+					return;
+				}
+				if (PasswordBox.Password != RepeatPasswordBox.Password) {
+					MessageBox.Show("Введённые пароли не совпадают.");
+					return;
+				}
+				using (var client = new ServiceReference1.Service1Client()) {
+					if (client.ExistsUserName(LoginBox.Text)) {
+						MessageBox.Show("Пользователь с таким имененм уже существует.");
+						return;
+					}
+					var user = client.Registration(new ServiceReference1.UserData { UserName = LoginBox.Text, Password = PasswordBox.Password });
+					if (user == null) {
+						MessageBox.Show("Регистрация не удалась.");
+						return;
+					} else {
+						ApplicationPresenter.ViewModel.User = user;
+						this.DialogResult = true;
+						Close();
+					}
+				}
+			} else {
+				regMode = true;
+				RepeatPasswordBox.Visibility = RepeatPasswordLabel.Visibility = Visibility.Visible;
+			}
+		}
+	}
 }

@@ -17,7 +17,6 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Label Content="Имя пользователя" Grid.Column="0" Grid.Row="0"/>
         <TextBox x:Name="LoginBox" Margin="4" Grid.Column="1" Grid.Row="0" MaxLength="30"/>
@@ -27,9 +26,7 @@
         <TextBox x:Name="FirstNameBox" Margin="4" Grid.Column="1" Grid.Row="2"/>
         <Label Content="Отчество" Grid.Column="0" Grid.Row="3"/>
         <TextBox x:Name="MiddleNameBox" Margin="4" Grid.Column="1" Grid.Row="3"/>
-        <Label Content="Дата регистрации" Grid.Column="0" Grid.Row="4"/>
-        <Label x:Name="RegDateBox" Margin="4" Grid.Column="1" Grid.Row="4"/>
-        <StackPanel Grid.Column="1" Grid.Row="5">
+        <StackPanel Grid.Column="1" Grid.Row="4">
             <Button x:Name="SaveButton" Content="Сохранить" Margin="4" Width="100" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>

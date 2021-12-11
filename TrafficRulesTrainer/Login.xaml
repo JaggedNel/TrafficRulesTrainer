@@ -1,27 +1,33 @@
 ﻿<Window x:Class="TrafficRulesTrainer.Login"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TrafficRulesTrainer"
-        mc:Ignorable="d"
-        Title="ПДД тест авторизация" Height="200" Width="400">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="10"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Label Content="Имя пользователя" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"/>
-        <TextBox x:Name="LoginBox" Grid.Row="1" Grid.Column="1" Margin="2"/>
-        <Label Content="Пароль" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"/>
-        <PasswordBox x:Name="PasswordBox" Grid.Row="2" Grid.Column="1" Margin="2"/>
-        <Button x:Name="LoginBtn" Content="Войти" Grid.Row="3" Grid.Column="1" Width="70" Margin="18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Click="LoginBtn_Click"/>
-    </Grid>
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:TrafficRulesTrainer"
+		mc:Ignorable="d"
+		Title="ПДД тест авторизация" Height="220" Width="400">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="10"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="70"/>
+		</Grid.RowDefinitions>
+		<Label Content="Имя пользователя" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right"/>
+		<TextBox x:Name="LoginBox" Grid.Row="1" Grid.Column="1" Margin="2"/>
+		<Label Content="Пароль" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right"/>
+		<PasswordBox x:Name="PasswordBox" Grid.Row="2" Grid.Column="1" Margin="2"/>
+		<Label x:Name="RepeatPasswordLabel" Content="Повторите пароль" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Visibility="Hidden"/>
+		<PasswordBox x:Name="RepeatPasswordBox" Grid.Row="3" Grid.Column="1" Margin="2" Visibility="Hidden"/>
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+            <Button x:Name="RegistrationBtn" Content="Регистрация" Width="90"  Margin="0,18,18,18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="RegistrationBtn_Click"/>
+            <Button x:Name="LoginBtn" Content="Войти" Width="90" Margin="0,18,18,18" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="LoginBtn_Click"/>
+        </StackPanel>
+	</Grid>
 </Window>
