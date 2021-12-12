@@ -90,6 +90,13 @@ namespace TrafficRulesTrainer {
 			if (++currentQuestion >= Questions.Count) {
 				int rightAnswersCount = Questions.Where(x => x.RightAnswerNumber == x.SelectedVariant).Count();
 				MessageBox.Show($"Ваш результат: {rightAnswersCount}/{Questions.Count}");
+				using (var client = new ServiceReference1.Service1Client()) {
+					client.TestCompleted(new ServiceReference1.TestResult {
+						Номер = ApplicationPresenter.ViewModel.User.UserID,
+						Правильных = rightAnswersCount,
+						Всего = Questions.Count
+					});
+				}
 				currentQuestion = 0;
 				ApplicationPresenter.ViewModel.GoToMainPage();
 			} else {

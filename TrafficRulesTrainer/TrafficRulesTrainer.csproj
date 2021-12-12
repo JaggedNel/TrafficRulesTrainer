@@ -61,6 +61,9 @@
     <Compile Include="ExamStatusControl.xaml.cs">
       <DependentUpon>ExamStatusControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HistoryControl.xaml.cs">
+      <DependentUpon>HistoryControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -74,6 +77,10 @@
       <DependentUpon>UserPageControl.xaml</DependentUpon>
     </Compile>
     <Page Include="ExamStatusControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HistoryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,6 +156,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\TrafficRulesTrainer.ServiceReference1.QuestionForm.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\TrafficRulesTrainer.ServiceReference1.TestResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\TrafficRulesTrainer.ServiceReference1.UserData.datasource">

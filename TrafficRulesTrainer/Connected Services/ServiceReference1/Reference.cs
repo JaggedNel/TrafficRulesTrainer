@@ -356,6 +356,147 @@ namespace TrafficRulesTrainer.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TestResult", Namespace="http://schemas.datacontract.org/2004/07/WcfService1")]
+    [System.SerializableAttribute()]
+    public partial class TestResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ВсегоField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ДатаField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ИмяField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int НомерField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ОтчествоField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ПравильныхField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ФамилияField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Всего {
+            get {
+                return this.ВсегоField;
+            }
+            set {
+                if ((this.ВсегоField.Equals(value) != true)) {
+                    this.ВсегоField = value;
+                    this.RaisePropertyChanged("Всего");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Дата {
+            get {
+                return this.ДатаField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ДатаField, value) != true)) {
+                    this.ДатаField = value;
+                    this.RaisePropertyChanged("Дата");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Имя {
+            get {
+                return this.ИмяField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ИмяField, value) != true)) {
+                    this.ИмяField = value;
+                    this.RaisePropertyChanged("Имя");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Номер {
+            get {
+                return this.НомерField;
+            }
+            set {
+                if ((this.НомерField.Equals(value) != true)) {
+                    this.НомерField = value;
+                    this.RaisePropertyChanged("Номер");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Отчество {
+            get {
+                return this.ОтчествоField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ОтчествоField, value) != true)) {
+                    this.ОтчествоField = value;
+                    this.RaisePropertyChanged("Отчество");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Правильных {
+            get {
+                return this.ПравильныхField;
+            }
+            set {
+                if ((this.ПравильныхField.Equals(value) != true)) {
+                    this.ПравильныхField = value;
+                    this.RaisePropertyChanged("Правильных");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Фамилия {
+            get {
+                return this.ФамилияField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ФамилияField, value) != true)) {
+                    this.ФамилияField = value;
+                    this.RaisePropertyChanged("Фамилия");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -413,6 +554,18 @@ namespace TrafficRulesTrainer.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Registration", ReplyAction="http://tempuri.org/IService1/RegistrationResponse")]
         System.Threading.Tasks.Task<TrafficRulesTrainer.ServiceReference1.UserData> RegistrationAsync(TrafficRulesTrainer.ServiceReference1.UserData user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TestCompleted", ReplyAction="http://tempuri.org/IService1/TestCompletedResponse")]
+        void TestCompleted(TrafficRulesTrainer.ServiceReference1.TestResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/TestCompleted", ReplyAction="http://tempuri.org/IService1/TestCompletedResponse")]
+        System.Threading.Tasks.Task TestCompletedAsync(TrafficRulesTrainer.ServiceReference1.TestResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetHistory", ReplyAction="http://tempuri.org/IService1/GetHistoryResponse")]
+        TrafficRulesTrainer.ServiceReference1.TestResult[] GetHistory(System.Nullable<int> UserID, string firstName, string lastName, string middleName, string dateTime);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetHistory", ReplyAction="http://tempuri.org/IService1/GetHistoryResponse")]
+        System.Threading.Tasks.Task<TrafficRulesTrainer.ServiceReference1.TestResult[]> GetHistoryAsync(System.Nullable<int> UserID, string firstName, string lastName, string middleName, string dateTime);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -512,6 +665,22 @@ namespace TrafficRulesTrainer.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TrafficRulesTrainer.ServiceReference1.UserData> RegistrationAsync(TrafficRulesTrainer.ServiceReference1.UserData user) {
             return base.Channel.RegistrationAsync(user);
+        }
+        
+        public void TestCompleted(TrafficRulesTrainer.ServiceReference1.TestResult result) {
+            base.Channel.TestCompleted(result);
+        }
+        
+        public System.Threading.Tasks.Task TestCompletedAsync(TrafficRulesTrainer.ServiceReference1.TestResult result) {
+            return base.Channel.TestCompletedAsync(result);
+        }
+        
+        public TrafficRulesTrainer.ServiceReference1.TestResult[] GetHistory(System.Nullable<int> UserID, string firstName, string lastName, string middleName, string dateTime) {
+            return base.Channel.GetHistory(UserID, firstName, lastName, middleName, dateTime);
+        }
+        
+        public System.Threading.Tasks.Task<TrafficRulesTrainer.ServiceReference1.TestResult[]> GetHistoryAsync(System.Nullable<int> UserID, string firstName, string lastName, string middleName, string dateTime) {
+            return base.Channel.GetHistoryAsync(UserID, firstName, lastName, middleName, dateTime);
         }
     }
 }

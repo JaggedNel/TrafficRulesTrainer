@@ -14,12 +14,6 @@ namespace WcfService1 {
 	public interface IService1 {
 
 		[OperationContract]
-		string GetData(int value);
-
-		[OperationContract]
-		CompositeType GetDataUsingDataContract(CompositeType composite);
-
-		[OperationContract]
 		bool CreateQuestionForm(string imageName, string questionText, List<string> answerVariants
 			, int rightAnswerNumber, string answerExplanation);
 
@@ -40,6 +34,12 @@ namespace WcfService1 {
 
 		[OperationContract]
 		UserData Registration(UserData user);
+
+		[OperationContract]
+		void TestCompleted(TestResult result);
+
+		[OperationContract]
+		List<TestResult> GetHistory(int? UserID, string firstName = null, string lastName = null, string middleName = null, string dateTime = null);
 
 		// TODO: Добавьте здесь операции служб
 	}
@@ -127,5 +127,23 @@ namespace WcfService1 {
 		public int Permission { get; set; }
 		[DataMember]
 		public string Password { get; set; }
+	}
+
+	[DataContract]
+	public class TestResult {
+		[DataMember(Name = "Номер")]
+		public int UserID { get; set; }
+		[DataMember(Name = "Имя")]
+		public string FirstName { get; set; }
+		[DataMember(Name = "Фамилия")]
+		public string LastName { get; set; }
+		[DataMember(Name = "Отчество")]
+		public string MiddleName { get; set; }
+		[DataMember(Name = "Правильных")]
+		public int RightAnswers { get; set; }
+		[DataMember(Name = "Всего")]
+		public int QuestionsCount { get; set; }
+		[DataMember(Name = "Дата")]
+		public string @DateTime { get; set; }
 	}
 }

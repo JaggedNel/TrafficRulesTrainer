@@ -47,6 +47,7 @@ namespace TrafficRulesTrainer {
 					if (user != null) {
 						ApplicationPresenter.ViewModel.User = user;
 						this.DialogResult = true;
+						ApplicationPresenter.ViewModel.MakeMenu();
 						Close();
 					} else {
 						MessageBox.Show("Неверное имя пользователя или пароль.");

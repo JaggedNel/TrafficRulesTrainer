@@ -36,6 +36,7 @@ namespace TrafficRulesTrainer {
 		public readonly MainWindow MainWindow;
 		public QuestionCreationControl questionCreationControl;
 		public QuestionControl questionControl;
+		public HistoryControl historyControl;
 		private Button MainButton;
 
 		Grid DataView;
@@ -51,7 +52,9 @@ namespace TrafficRulesTrainer {
 
 			DataView = dataView;
 			Menu = menu;
+		}
 
+		public void MakeMenu() {
 			Button mainBtn = new Button();
 			mainBtn.Content = "Главная";
 			mainBtn.Click += MainBtn_Click;
@@ -65,6 +68,12 @@ namespace TrafficRulesTrainer {
 				createQuestionBtn.Click += CreateQuestionBtn_Click;
 				Menu.Children.Add(createQuestionBtn);
 				questionCreationControl = new QuestionCreationControl();
+
+				Button globalHistoryBtn = new Button();
+				globalHistoryBtn.Content = "Поиск по истории";
+				globalHistoryBtn.Click += GlobalHistory_Click;
+				Menu.Children.Add(globalHistoryBtn);
+				historyControl = new HistoryControl();
 			}
 
 			Button startTestBtn = new Button();
@@ -72,6 +81,42 @@ namespace TrafficRulesTrainer {
 			startTestBtn.Click += StartTestBtn_Click;
 			Menu.Children.Add(startTestBtn);
 			questionControl = new QuestionControl();
+
+			Button myHistoryBtn = new Button();
+			myHistoryBtn.Content = "Мои результаты";
+			myHistoryBtn.Click += MyHistoryBtn_Click;
+			Menu.Children.Add(myHistoryBtn);
+		}
+
+		DataGrid historyTable;
+		private void MyHistoryBtn_Click(object sender, RoutedEventArgs e) {
+			historyTable = new DataGrid();
+			GridLocate(DataView, historyTable, 1, 1);
+			using (var client = new ServiceReference1.Service1Client()) {
+				var info = client.GetHistory(User.UserID, null, null, null, null).ToList();
+				historyTable.ItemsSource = info;
+			}
+			historyTable.IsManipulationEnabled = false;
+			historyTable.Loaded += HistoryTable_Loaded;
+			MainButton.Visibility = Visibility.Visible;
+		}
+
+		private void HistoryTable_Loaded(object sender, RoutedEventArgs e) {
+			int i = 0;
+			while (i < historyTable.Columns.Count) {
+				if (historyTable.Columns[i].Header.ToString() == "ExtensionData") {
+					historyTable.Columns.RemoveAt(i);
+				} else {
+					i++;
+				}
+			}
+		}
+
+		private void GlobalHistory_Click(object sender, RoutedEventArgs e) {
+			historyControl.Clear();
+			GridLocate(DataView, historyControl, 1, 1);
+			historyControl.HistoryTable.IsManipulationEnabled = false;
+			MainButton.Visibility = Visibility.Visible;
 		}
 
 		private void MainBtn_Click(object sender, RoutedEventArgs e) {

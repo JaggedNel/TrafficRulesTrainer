@@ -38,4 +38,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UserData" nillable="true" type="tns:UserData" />
+  <xs:complexType name="TestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Всего" type="xs:int" />
+      <xs:element minOccurs="0" name="Дата" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Имя" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Номер" type="xs:int" />
+      <xs:element minOccurs="0" name="Отчество" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Правильных" type="xs:int" />
+      <xs:element minOccurs="0" name="Фамилия" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TestResult" nillable="true" type="tns:TestResult" />
+  <xs:complexType name="ArrayOfTestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TestResult" nillable="true" type="tns:TestResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTestResult" nillable="true" type="tns:ArrayOfTestResult" />
 </xs:schema>
