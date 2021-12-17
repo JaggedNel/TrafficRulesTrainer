@@ -69,6 +69,9 @@ namespace TrafficRulesTrainer {
 				AnswerVariantsList.Items.Add(new ListBoxItem() { Content = i });
 		}
 
+		/// <summary>
+		/// Кнопка "Ответить"
+		/// </summary>
 		private void AnswerButton_Click(object sender, RoutedEventArgs e) {
 			if (SelectedAnswerVariant == -1) {
 				MessageBox.Show("Выбирите вариант ответа.");
@@ -82,6 +85,9 @@ namespace TrafficRulesTrainer {
 			AnswerVariantsList.SelectedIndex = -1;
 			AnswerExplanationLabel.Text = CurrentQuestion.AnswerExplanation;
 		}
+		/// <summary>
+		/// Кнопка "Далее"
+		/// </summary>
 		private void NextButton_Click(object sender, RoutedEventArgs e) {
 			if (!CurrentQuestion.SelectedVariant.HasValue) {
 				MessageBox.Show("Выбирите вариант ответа.");
